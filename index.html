@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ademar Barreto | Arquiteto de Soluções & Cloud Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg2: #0f1521;
+    --bg3: #151c2b;
+    --border: #1e2d45;
+    --border2: #243450;
+    --cyan: #00d4ff;
+    --cyan-dim: #0099bb;
+    --cyan-glow: rgba(0,212,255,0.12);
+    --green: #39ff7e;
+    --green-dim: rgba(57,255,126,0.15);
+    --text: #e2e8f0;
+    --text2: #8899aa;
+    --text3: #506070;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,14,20,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 56px;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px; color: var(--cyan);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-family: var(--mono);
+    color: var(--text2); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cyan); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 7rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(var(--border2) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border2) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 900px; margin: 0 auto; position: relative;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--cyan); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 24px; height: 1px; background: var(--cyan);
+  }
+  h1 {
+    font-family: var(--sans); font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 0.5rem;
+  }
+  .hero-title-accent { color: var(--cyan); }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text2);
+    font-weight: 300; margin-bottom: 2rem;
+  }
+  .terminal {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 0;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+    max-width: 560px;
+  }
+  .terminal-bar {
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 14px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f56; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #27c93f; }
+  .terminal-title { font-size: 11px; color: var(--text3); margin-left: 8px; }
+  .terminal-body { padding: 16px 20px; line-height: 2; }
+  .t-comment { color: var(--text3); }
+  .t-key { color: var(--cyan); }
+  .t-val { color: var(--green); }
+  .t-cursor {
+    display: inline-block; width: 8px; height: 14px;
+    background: var(--cyan); vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--cyan); color: #000;
+    font-family: var(--mono); font-size: 13px; font-weight: 700;
+    padding: 10px 22px; border-radius: 6px;
+    text-decoration: none; letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border2); color: var(--text2);
+    font-family: var(--mono); font-size: 13px;
+    padding: 10px 22px; border-radius: 6px;
+    text-decoration: none; letter-spacing: 0.05em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: var(--mono); font-size: 2rem; font-weight: 700;
+    color: var(--cyan); line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px; color: var(--text3); margin-top: 4px; text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .section-tag {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
+    color: var(--cyan); text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600;
+    color: #fff; margin-bottom: 0.5rem; letter-spacing: -0.01em;
+  }
+  .section-desc {
+    color: var(--text2); font-size: 15px; margin-bottom: 3rem;
+    max-width: 540px;
+  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* STACK */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .stack-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .stack-card:hover { border-color: var(--border2); }
+  .stack-cat {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--cyan); margin-bottom: 0.75rem;
+  }
+  .stack-items { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: var(--mono); font-size: 11px;
+    background: var(--bg3); border: 1px solid var(--border2);
+    color: var(--text2); padding: 3px 9px; border-radius: 4px;
+  }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 6px; bottom: 6px;
+    width: 1px; background: var(--border2);
+  }
+  .tl-item { position: relative; padding-bottom: 2.5rem; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot {
+    position: absolute; left: -2rem;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--cyan); border: 2px solid var(--bg);
+    top: 6px; margin-left: -3.5px;
+  }
+  .tl-period {
+    font-family: var(--mono); font-size: 11px; color: var(--text3);
+    letter-spacing: 0.1em; margin-bottom: 4px;
+  }
+  .tl-role { font-size: 16px; font-weight: 600; color: #fff; }
+  .tl-company { font-size: 14px; color: var(--cyan); margin-bottom: 8px; }
+  .tl-desc { font-size: 14px; color: var(--text2); line-height: 1.6; }
+  .tl-desc li { margin-bottom: 3px; list-style: none; padding-left: 1.2em; position: relative; }
+  .tl-desc li::before {
+    content: '›'; position: absolute; left: 0; color: var(--cyan);
+  }
+
+  /* PROJETOS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .project-card:hover { border-color: var(--cyan-dim); transform: translateY(-2px); }
+  .project-icon { font-size: 1.4rem; margin-bottom: 2px; }
+  .project-name { font-size: 15px; font-weight: 600; color: #fff; }
+  .project-desc { font-size: 13px; color: var(--text2); flex: 1; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+  .project-link {
+    font-family: var(--mono); font-size: 11px; color: var(--cyan);
+    text-decoration: none; margin-top: 8px;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .project-link:hover { text-decoration: underline; }
+
+  /* CERTS */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .cert-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .cert-provider {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text3);
+  }
+  .cert-name { font-size: 14px; font-weight: 600; color: #fff; }
+  .cert-id { font-family: var(--mono); font-size: 10px; color: var(--text3); }
+
+  /* CONTATO */
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem 1.25rem;
+    text-decoration: none; color: var(--text2);
+    font-size: 14px;
+    transition: border-color 0.2s, color 0.2s;
+    min-width: 200px;
+  }
+  .contact-link:hover { border-color: var(--cyan); color: var(--cyan); }
+  .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .contact-label { font-size: 11px; color: var(--text3); display: block; }
+  .contact-val { font-size: 14px; color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    font-family: var(--mono); font-size: 12px; color: var(--text3);
+  }
+  footer a { color: var(--cyan); text-decoration: none; }
+
+  /* FADE IN */
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .stat-num { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">~/ademar-barreto</span>
+  <ul class="nav-links">
+    <li><a href="#stack">stack</a></li>
+    <li><a href="#experiencia">experiência</a></li>
+    <li><a href="#projetos">projetos</a></li>
+    <li><a href="#certs">certs</a></li>
+    <li><a href="#contato">contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">disponível para novos desafios</div>
+    <h1>Ademar<br><span class="hero-title-accent">Barreto</span></h1>
+    <p class="hero-sub">Arquiteto de Soluções · Gerente de Infraestrutura · Cloud & AI Engineer</p>
+
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span class="terminal-title">profile.json</span>
+      </div>
+      <div class="terminal-body">
+        <span class="t-comment">// Rio de Janeiro, RJ · Brasil</span><br>
+        <span class="t-key">experiência</span>: <span class="t-val">"+30 anos em TI"</span>,<br>
+        <span class="t-key">foco</span>: <span class="t-val">["Cloud", "DevOps", "IaC", "GenAI"]</span>,<br>
+        <span class="t-key">clouds</span>: <span class="t-val">["AWS ✓", "Azure ✓", "OCI", "GCP"]</span>,<br>
+        <span class="t-key">idiomas</span>: <span class="t-val">["PT-BR", "EN (avançado)"]</span><span class="t-cursor"></span>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="https://github.com/ademarbarreto" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 16 16" width="16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/ademarsilvabarretojunior/" target="_blank" class="btn-ghost">LinkedIn</a>
+      <a href="https://medium.com/@ademar.barreto" target="_blank" class="btn-ghost">Medium</a>
+      <a href="mailto:ademar.barreto@gmail.com" class="btn-ghost">✉ Email</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">30+</div>
+        <div class="stat-label">anos em TI</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">cloud certs</div>
+      </div>
+      <div>
+        <div class="stat-num">800+</div>
+        <div class="stat-label">servidores migrados</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">bootcamps DIO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- STACK -->
+<section id="stack">
+  <div class="container fade-in">
+    <div class="section-tag">// habilidades técnicas</div>
+    <h2>Stack</h2>
+    <p class="section-desc">Tecnologias e ferramentas que domino no dia a dia — de infra até IA generativa.</p>
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-cat">☁ Cloud</div>
+        <div class="stack-items">
+          <span class="tag">AWS</span><span class="tag">Azure</span>
+          <span class="tag">Oracle Cloud</span><span class="tag">GCP</span>
+          <span class="tag">Microsoft 365</span><span class="tag">Entra ID</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">⚙ IaC & DevOps</div>
+        <div class="stack-items">
+          <span class="tag">Terraform</span><span class="tag">Ansible</span>
+          <span class="tag">Jenkins</span><span class="tag">GitHub Actions</span>
+          <span class="tag">CI/CD</span><span class="tag">Git</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">🐳 Containers</div>
+        <div class="stack-items">
+          <span class="tag">Docker</span><span class="tag">Kubernetes</span>
+          <span class="tag">Prometheus</span><span class="tag">Grafana</span>
+          <span class="tag">Nginx</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">🤖 Inteligência Artificial</div>
+        <div class="stack-items">
+          <span class="tag">LangChain</span><span class="tag">Claude API</span>
+          <span class="tag">ChatGPT API</span><span class="tag">N8N</span>
+          <span class="tag">MCP</span><span class="tag">Prompt Eng.</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">🔐 Segurança</div>
+        <div class="stack-items">
+          <span class="tag">Defender</span><span class="tag">Intune</span>
+          <span class="tag">DLP / MIP</span><span class="tag">Checkpoint</span>
+          <span class="tag">VPN SASE</span><span class="tag">Active Directory</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-cat">💻 Desenvolvimento</div>
+        <div class="stack-items">
+          <span class="tag">Python</span><span class="tag">PowerShell</span>
+          <span class="tag">FastAPI</span><span class="tag">Streamlit</span>
+          <span class="tag">Power BI</span><span class="tag">SQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIÊNCIA -->
+<section id="experiencia">
+  <div class="container fade-in">
+    <div class="section-tag">// trajetória profissional</div>
+    <h2>Experiência</h2>
+    <p class="section-desc">De mainframe bancário em 1988 até cloud & AI em 2025 — uma jornada de 36 anos em constante evolução.</p>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">JUN 2024 – SET 2025</div>
+        <div class="tl-role">Gerente de Infraestrutura</div>
+        <div class="tl-company">Globality IT Latam Ltda — Rio de Janeiro, RJ</div>
+        <ul class="tl-desc">
+          <li>Liderança de infra cloud Azure para 110 usuários com 99,5% de disponibilidade</li>
+          <li>Redução de 25% nos custos de licenciamento via otimização de contratos</li>
+          <li>Implementação de VPN SASE para Bradesco e Bradesco Seguros</li>
+          <li>Automação de provisionamento via PowerShell e IaC</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">JAN 2022 – MAR 2024</div>
+        <div class="tl-role">Gerente de Projetos / Arquiteto de Automação</div>
+        <div class="tl-company">SIS Inov & Tech — Rio de Janeiro, RJ</div>
+        <ul class="tl-desc">
+          <li>Arquitetura de automação para atualização do PowerCenter 10.5 na Bradesco Seguros</li>
+          <li>Liderança da migração e desativação de mais de 800 servidores Windows</li>
+          <li>Coordenação de migração de plataformas críticas: WAS, SAS, SAP, Dynatrace, SQL Server</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">JAN 2007 – ABR 2016</div>
+        <div class="tl-role">Analista de Sistemas Sênior</div>
+        <div class="tl-company">Mobipower — São Paulo, SP</div>
+        <ul class="tl-desc">
+          <li>Desenvolvimento de soluções mobile Android para Porto Seguro (Porto Socorro)</li>
+          <li>Gateways GPS/LBS para rastreadores e sistemas mobile</li>
+          <li>Homologação POS junto a Cielo, Redecard e GetNet</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">DEZ 2005 – NOV 2006</div>
+        <div class="tl-role">Coordenador de Projetos</div>
+        <div class="tl-company">Telefônica Empresas — São Paulo, SP</div>
+        <ul class="tl-desc">
+          <li>Coordenação de TI no Banco Santander (outsourcing Managed Services)</li>
+          <li>Migração da plataforma de internet banking do Santander</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">AGO 1996 – DEZ 2005</div>
+        <div class="tl-role">Proprietário & Gerente de Projetos</div>
+        <div class="tl-company">Helpfor S.A. — Rio de Janeiro, RJ</div>
+        <ul class="tl-desc">
+          <li>Fundação e gestão de empresa de TI e outsourcing para bancos Bozano e Santander</li>
+          <li>Coordenação da fusão Bozano + Simonsen + Meridional (rede e sistemas Unix)</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-period">OUT 1988 – AGO 1996</div>
+        <div class="tl-role">Analista de Suporte e Sistemas</div>
+        <div class="tl-company">Banco Bozano Simonsen / Banco Santander — Rio de Janeiro, RJ</div>
+        <ul class="tl-desc">
+          <li>Implantação de rede local, agências, internet e firewalls Checkpoint</li>
+          <li>Coordenação do Downsizing: Mainframe IBM para UNIX</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJETOS -->
+<section id="projetos">
+  <div class="container fade-in">
+    <div class="section-tag">// portfólio técnico</div>
+    <h2>Projetos</h2>
+    <p class="section-desc">Desafios práticos desenvolvidos em bootcamps DIO e iniciativas pessoais.</p>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-icon">🏗</div>
+        <div class="project-name">desafio-localstack</div>
+        <div class="project-desc">Arquitetura serverless AWS simulada localmente com LocalStack — S3, Lambda, DynamoDB, API Gateway e CloudWatch via Docker.</div>
+        <div class="project-tags">
+          <span class="tag">AWS</span><span class="tag">LocalStack</span><span class="tag">Docker</span><span class="tag">Lambda</span>
+        </div>
+        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">⚡</div>
+        <div class="project-name">AWS CDK + Step Functions</div>
+        <div class="project-desc">Orquestração de workflows com Step Functions, EventBridge, Python Lambda, S3, DynamoDB e SNS usando AWS CDK.</div>
+        <div class="project-tags">
+          <span class="tag">CDK</span><span class="tag">Step Functions</span><span class="tag">Python</span><span class="tag">EventBridge</span>
+        </div>
+        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🤖</div>
+        <div class="project-name">copiloto-vendas-ia</div>
+        <div class="project-desc">Copiloto de vendas para pet shop usando Python, Streamlit e OpenAI API — com base de conhecimento e plano de testes.</div>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">OpenAI</span><span class="tag">LangChain</span>
+        </div>
+        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🌿</div>
+        <div class="project-name">calculadora-co2</div>
+        <div class="project-desc">Calculadora de emissões de CO₂ em JS vanilla com integração OpenRouteService, autocomplete de cidades e histórico via localStorage.</div>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span><span class="tag">API REST</span><span class="tag">GitHub Actions</span><span class="tag">GitHub Pages</span>
+        </div>
+        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🏦</div>
+        <div class="project-name">FastAPI Banking</div>
+        <div class="project-desc">API bancária com autenticação JWT (PyJWT 2.x), bcrypt, passlib — desenvolvida em WSL/Ubuntu com resolução de breaking changes.</div>
+        <div class="project-tags">
+          <span class="tag">FastAPI</span><span class="tag">JWT</span><span class="tag">Python</span><span class="tag">WSL</span>
+        </div>
+        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">📊</div>
+        <div class="project-name">FinChat</div>
+        <div class="project-desc">App de finanças pessoais com chat IA desenvolvido com Vibe Coding em HTML/CSS/JS puro para CodeSandbox.</div>
+        <div class="project-tags">
+          <span class="tag">HTML/CSS/JS</span><span class="tag">GenAI</span><span class="tag">Vibe Coding</span>
+        </div>
+        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CERTIFICAÇÕES -->
+<section id="certs">
+  <div class="container fade-in">
+    <div class="section-tag">// credenciais</div>
+    <h2>Certificações</h2>
+    <p class="section-desc">Certificações ativas e formação contínua em cloud, IA e gestão.</p>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-provider">Amazon Web Services</div>
+        <div class="cert-name">AWS Certified Cloud Practitioner</div>
+        <div class="cert-id">Válida até 2028 · SNH39GK6JRQ1V5B</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-provider">Microsoft</div>
+        <div class="cert-name">Azure Fundamentals AZ-900</div>
+        <div class="cert-id">Renovada Ago 2025 · 1C020DE7A7FADFEE</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-provider">Microsoft</div>
+        <div class="cert-name">Azure AI Fundamentals AI-900</div>
+        <div class="cert-id">Mai 2025 · B3BD6180D5DC1190</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-provider">Oracle</div>
+        <div class="cert-name">Cloud Infrastructure Foundations</div>
+        <div class="cert-id">OCI Associate 2021</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-provider">The Scrum Academy / SCRUMstudy</div>
+        <div class="cert-name">Scrum Master Foundation (ISMF + SFC)</div>
+        <div class="cert-id">2018</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-provider">Anthropic</div>
+        <div class="cert-name">Claude 101 + Claude Cowork</div>
+        <div class="cert-id">Abr–Mai 2026</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2.5rem;">
+      <div class="section-tag" style="margin-bottom: 0.75rem;">// formação acadêmica</div>
+      <div class="stack-items" style="gap: 8px;">
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">Eng. Eletrônica · PUC-RJ · 1985</span>
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">Pós-Grad. Análise e Proj. de Sistemas · PUC-RJ · 1989</span>
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">MBA Finanças · IBMEC · 1993</span>
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">MBA Marketing · IBMEC-RJ · 2005</span>
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">Nanodegree Deep Learning · Udacity · 2018</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="container fade-in">
+    <div class="section-tag">// get in touch</div>
+    <h2>Contato</h2>
+    <p class="section-desc">Aberto a oportunidades em cloud, arquitetura de soluções, DevOps e IA. Vamos conversar?</p>
+    <div class="contact-links">
+      <a href="mailto:ademar.barreto@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <div>
+          <span class="contact-label">email</span>
+          <span class="contact-val">ademar.barreto@gmail.com</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/ademarsilvabarretojunior/" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        <div>
+          <span class="contact-label">linkedin</span>
+          <span class="contact-val">ademarsilvabarretojunior</span>
+        </div>
+      </a>
+      <a href="https://github.com/ademarbarreto" target="_blank" class="contact-link">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <div>
+          <span class="contact-label">github</span>
+          <span class="contact-val">ademarbarreto</span>
+        </div>
+      </a>
+      <a href="https://medium.com/@ademar.barreto" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        <div>
+          <span class="contact-label">medium</span>
+          <span class="contact-val">@ademar.barreto</span>
+        </div>
+      </a>
+      <a href="tel:+5521991567836" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <div>
+          <span class="contact-label">telefone</span>
+          <span class="contact-val">(21) 99156-7836</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Feito com 💻 por <a href="https://github.com/ademarbarreto">Ademar Barreto</a> · Rio de Janeiro, RJ · 2026</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
