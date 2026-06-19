@@ -85,47 +85,15 @@
     width: 24px; height: 1px; background: var(--cyan);
   }
   h1 {
-    font-family: var(--sans); font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-family: var(--sans); font-size: clamp(2rem, 8vw, 4.2rem);
     font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
-    color: #fff; margin-bottom: 0.5rem;
+    color: #fff; margin-bottom: 0.5rem; white-space: nowrap;
   }
   .hero-title-accent { color: var(--cyan); }
   .hero-sub {
     font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text2);
     font-weight: 300; margin-bottom: 2rem;
   }
-  .terminal {
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    border-radius: 10px;
-    font-family: var(--mono);
-    font-size: 13px;
-    padding: 0;
-    margin-bottom: 2.5rem;
-    overflow: hidden;
-    max-width: 560px;
-  }
-  .terminal-bar {
-    background: var(--bg3);
-    border-bottom: 1px solid var(--border);
-    padding: 8px 14px;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .dot { width: 10px; height: 10px; border-radius: 50%; }
-  .dot-r { background: #ff5f56; }
-  .dot-y { background: #ffbd2e; }
-  .dot-g { background: #27c93f; }
-  .terminal-title { font-size: 11px; color: var(--text3); margin-left: 8px; }
-  .terminal-body { padding: 16px 20px; line-height: 2; }
-  .t-comment { color: var(--text3); }
-  .t-key { color: var(--cyan); }
-  .t-val { color: var(--green); }
-  .t-cursor {
-    display: inline-block; width: 8px; height: 14px;
-    background: var(--cyan); vertical-align: middle;
-    animation: blink 1s step-end infinite;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
 
   .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
   .btn-primary {
@@ -253,6 +221,35 @@
   }
   .project-link:hover { text-decoration: underline; }
 
+  /* ARTIGOS */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .article-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-decoration: none;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .article-card:hover { border-color: var(--cyan-dim); transform: translateY(-2px); }
+  .article-date {
+    font-family: var(--mono); font-size: 11px; color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+  .article-title {
+    font-size: 14px; font-weight: 600; color: #fff; line-height: 1.4;
+  }
+  .article-readmore {
+    font-family: var(--mono); font-size: 11px; color: var(--cyan);
+    margin-top: auto; padding-top: 4px;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+
   /* CERTS */
   .certs-grid {
     display: grid;
@@ -266,6 +263,16 @@
     padding: 1.25rem;
     display: flex; flex-direction: column; gap: 6px;
   }
+  .cert-card.dio-badge { flex-direction: row; align-items: center; gap: 14px; }
+  .cert-badge-icon {
+    flex-shrink: 0; width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan-dim), var(--cyan));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-weight: 700; font-size: 14px;
+    color: #001a22;
+  }
+  .cert-card-body { display: flex; flex-direction: column; gap: 4px; }
   .cert-provider {
     font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
     text-transform: uppercase; color: var(--text3);
@@ -319,6 +326,7 @@
     <li><a href="#stack">stack</a></li>
     <li><a href="#experiencia">experiência</a></li>
     <li><a href="#projetos">projetos</a></li>
+    <li><a href="#artigos">artigos</a></li>
     <li><a href="#certs">certs</a></li>
     <li><a href="#contato">contato</a></li>
   </ul>
@@ -329,24 +337,8 @@
   <div class="hero-grid"></div>
   <div class="hero-inner">
     <div class="hero-eyebrow">disponível para novos desafios</div>
-    <h1>Ademar<br><span class="hero-title-accent">Barreto</span></h1>
+    <h1>Ademar <span class="hero-title-accent">Silva Barreto Júnior</span></h1>
     <p class="hero-sub">Arquiteto de Soluções · Gerente de Infraestrutura · Cloud & AI Engineer</p>
-
-    <div class="terminal">
-      <div class="terminal-bar">
-        <span class="dot dot-r"></span>
-        <span class="dot dot-y"></span>
-        <span class="dot dot-g"></span>
-        <span class="terminal-title">profile.json</span>
-      </div>
-      <div class="terminal-body">
-        <span class="t-comment">// Rio de Janeiro, RJ · Brasil</span><br>
-        <span class="t-key">experiência</span>: <span class="t-val">"+30 anos em TI"</span>,<br>
-        <span class="t-key">foco</span>: <span class="t-val">["Cloud", "DevOps", "IaC", "GenAI"]</span>,<br>
-        <span class="t-key">clouds</span>: <span class="t-val">["AWS ✓", "Azure ✓", "OCI", "GCP"]</span>,<br>
-        <span class="t-key">idiomas</span>: <span class="t-val">["PT-BR", "EN (avançado)"]</span><span class="t-cursor"></span>
-      </div>
-    </div>
 
     <div class="hero-ctas">
       <a href="https://github.com/ademarbarreto" target="_blank" class="btn-primary">
@@ -355,7 +347,7 @@
       </a>
       <a href="https://www.linkedin.com/in/ademarsilvabarretojunior/" target="_blank" class="btn-ghost">LinkedIn</a>
       <a href="https://medium.com/@ademar.barreto" target="_blank" class="btn-ghost">Medium</a>
-      <a href="mailto:ademar.barreto@gmail.com" class="btn-ghost">✉ Email</a>
+      <a href="mailtoademar.barreto@gmail.com" class="btn-ghost">✉ Email</a>
     </div>
 
     <div class="hero-stats">
@@ -364,15 +356,15 @@
         <div class="stat-label">anos em TI</div>
       </div>
       <div>
-        <div class="stat-num">3</div>
+        <div class="stat-num">4</div>
         <div class="stat-label">cloud certs</div>
       </div>
       <div>
-        <div class="stat-num">800+</div>
-        <div class="stat-label">servidores migrados</div>
+        <div class="stat-num">5</div>
+        <div class="stat-label">Bootcamps THE CLOUD BOOTCAMP</div>
       </div>
       <div>
-        <div class="stat-num">10+</div>
+        <div class="stat-num">11+</div>
         <div class="stat-label">bootcamps DIO</div>
       </div>
     </div>
@@ -536,42 +528,42 @@
 
       <div class="project-card">
         <div class="project-icon">🏗</div>
-        <div class="project-name">desafio-localstack</div>
+        <div class="project-name">Desafio LocalStack — Sistema de Notas Fiscais na AWS</div>
         <div class="project-desc">Arquitetura serverless AWS simulada localmente com LocalStack — S3, Lambda, DynamoDB, API Gateway e CloudWatch via Docker.</div>
         <div class="project-tags">
           <span class="tag">AWS</span><span class="tag">LocalStack</span><span class="tag">Docker</span><span class="tag">Lambda</span>
         </div>
-        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+        <a href="https://github.com/ademarbarreto/desafio-localstack" target="_blank" class="project-link">→ ver no GitHub</a>
       </div>
 
       <div class="project-card">
         <div class="project-icon">⚡</div>
-        <div class="project-name">AWS CDK + Step Functions</div>
+        <div class="project-name">Automação Agendada com AWS Step Functions + Python + CDK</div>
         <div class="project-desc">Orquestração de workflows com Step Functions, EventBridge, Python Lambda, S3, DynamoDB e SNS usando AWS CDK.</div>
         <div class="project-tags">
           <span class="tag">CDK</span><span class="tag">Step Functions</span><span class="tag">Python</span><span class="tag">EventBridge</span>
         </div>
-        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+        <a href="https://github.com/ademarbarreto/desafio-fluxo-aws-step-functions" target="_blank" class="project-link">→ ver no GitHub</a>
       </div>
 
       <div class="project-card">
         <div class="project-icon">🤖</div>
-        <div class="project-name">copiloto-vendas-ia</div>
+        <div class="project-name">Luna — Copiloto de Vendas Pet Shop</div>
         <div class="project-desc">Copiloto de vendas para pet shop usando Python, Streamlit e OpenAI API — com base de conhecimento e plano de testes.</div>
         <div class="project-tags">
           <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">OpenAI</span><span class="tag">LangChain</span>
         </div>
-        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+        <a href="https://github.com/ademarbarreto/desafio-copiloto-de-vendas" target="_blank" class="project-link">→ ver no GitHub</a>
       </div>
 
       <div class="project-card">
         <div class="project-icon">🌿</div>
-        <div class="project-name">calculadora-co2</div>
+        <div class="project-name">Calculadora de Emissão de CO₂</div>
         <div class="project-desc">Calculadora de emissões de CO₂ em JS vanilla com integração OpenRouteService, autocomplete de cidades e histórico via localStorage.</div>
         <div class="project-tags">
           <span class="tag">JavaScript</span><span class="tag">API REST</span><span class="tag">GitHub Actions</span><span class="tag">GitHub Pages</span>
         </div>
-        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+        <a href="https://github.com/ademarbarreto/CalculadoraCO2" target="_blank" class="project-link">→ ver no GitHub</a>
       </div>
 
       <div class="project-card">
@@ -581,7 +573,7 @@
         <div class="project-tags">
           <span class="tag">FastAPI</span><span class="tag">JWT</span><span class="tag">Python</span><span class="tag">WSL</span>
         </div>
-        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+        <a href="https://github.com/ademarbarreto/api-bancaria" target="_blank" class="project-link">→ ver no GitHub</a>
       </div>
 
       <div class="project-card">
@@ -591,9 +583,169 @@
         <div class="project-tags">
           <span class="tag">HTML/CSS/JS</span><span class="tag">GenAI</span><span class="tag">Vibe Coding</span>
         </div>
-        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
+        <a href="https://github.com/ademarbarreto/Finchat" target="_blank" class="project-link">→ ver no GitHub</a>
       </div>
 
+      <div class="project-card">
+        <div class="project-icon">📦</div>
+        <div class="project-name">Previsão de Estoque Inteligente na AWS com SageMaker Canvas</div>
+        <div class="project-desc"> usar o SageMaker Canvas para criar previsões de estoque baseadas em Machine Learning (ML)</div>
+        <div class="project-tags">
+          <span class="tag">AWS</span><span class="tag">SageMaker Canvas</span><span class="tag">Machine Learning</span>
+        </div>
+        <a href="https://github.com/ademarbarreto/lab-aws-sagemaker-canvas-estoque" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🧠</div>
+        <div class="project-name">Agente ADE: Gestor Pessoal Financeiro Inteligente</div>
+        <div class="project-desc">Este projeto utiliza Inteligência Artificial para analisar hábitos financeiros, classificar despesas automaticamente e gerar insights personalizados.</div>
+        <div class="project-tags">
+          <span class="tag">Agentes de IA</span><span class="tag">Prompt Engineering</span><span class="tag">Python</span>
+        </div>
+        <a href="https://github.com/ademarbarreto/dio-lab-bia-do-futuro" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🔌</div>
+        <div class="project-name">Desafio Bootcamp TQI: Gerenciando Instâncias EC2 na AWS</div>
+        <div class="project-desc">Criar EC2 (Ubuntu + NGINX) no Free Tier, gerar AMI customizada terraform-ec2-ami e criar uma nova instância a partir da AMI, usando Terraform.</div>
+        <div class="project-tags">
+          <span class="tag">MCP</span><span class="tag">Agentes de IA</span><span class="tag">LangChain</span>
+        </div>
+        <a href="https://github.com/ademarbarreto/desafio-TQI-terraform-ec2-ami-nginx" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🔌</div>
+        <div class="project-name">Agente de Organização de Tarefas com Google ADK + Trello</div>
+        <div class="project-desc"> SageMaker Canvas para criar previsões de estoque baseadas em Machine Learning (ML)</div>
+        <div class="project-tags">
+          <span class="tag">MCP</span><span class="tag">Agentes de IA</span><span class="tag">LangChain</span>
+        </div>
+        <a href="https://github.com/ademarbarreto/desafio-TQI-terraform-ec2-ami-nginx" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">🔌</div>
+        <div class="project-name">Detecção de Fraude em Cartão de Crédito - Credicard</div>
+        <div class="project-desc">Análise técnica completa de Machine Learning desenvolvido para detecção de fraudes em transações fraudulentas em cartões de crédito.
+O projeto utiliza o dataset público Creditcard</div>
+        <div class="project-tags">
+          <span class="tag">MCP</span><span class="tag">Agentes de IA</span><span class="tag">LangChain</span>
+        </div>
+        <a href="https://github.com/ademarbarreto/accenture" target="_blank" class="project-link">→ ver no GitHub</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ARTIGOS -->
+<section id="artigos">
+  <div class="container fade-in">
+    <div class="section-tag">// blog técnico</div>
+    <h2>Artigos no Medium</h2>
+    <p class="section-desc">Documentação de projetos práticos, certificações e aprendizados em cloud e IA generativa.</p>
+
+    <div class="section-tag" style="margin-bottom: 0.75rem;">🎓 conclusão de bootcamps — the cloud bootcamp</div>
+    <div class="articles-grid" style="margin-bottom: 2.5rem;">
+
+      <a href="https://medium.com/@ademar.barreto/certificado-do-ai-cloud-bootcamp-da-empresa-the-cloud-bootcamp-cd10dfa003bf" target="_blank" class="article-card">
+        <div class="article-date">02 OUT 2025</div>
+        <div class="article-title">Certificado do AI Cloud Bootcamp — The Cloud Bootcamp</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+      <a href="https://medium.com/@ademar.barreto/bootcamp-devops-cloud-2-0-295af2b45f96" target="_blank" class="article-card">
+        <div class="article-date">13 MAR 2024</div>
+        <div class="article-title">Bootcamp DevOps Cloud 2.0 — The Cloud Bootcamp</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+      <a href="https://medium.com/@ademar.barreto/institui%C3%A7%C3%A3o-the-cloud-bootcamp-treinamento-bootcamp-amazon-web-services-programa-de-db74b00de3d3" target="_blank" class="article-card">
+        <div class="article-date">13 MAR 2024</div>
+        <div class="article-title">Bootcamp Amazon Web Services (AWS) - The Cloud Bootcamp</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+      <a href="https://medium.com/@ademar.barreto/certificado-de-conclus%C3%A3o-do-bootcamp-de-azure-8d8352cbe8?postPublishedType=repub" target="_blank" class="article-card">
+        <div class="article-date">13 MAR 2024</div>
+        <div class="article-title">Certificado de conclusão Bootcamp de Azure — The Cloud Bootcamp</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>      
+      
+
+      <a href="https://medium.com/@ademar.barreto/conclus%C3%A3o-dos-4-bootcamps-ministrados-pela-the-cloud-bootcamp-9609c743aa11" target="_blank" class="article-card">
+        <div class="article-date">13 MAR 2024</div>
+        <div class="article-title">Conclusão dos 4 Bootcamps (GCP, AWS, AZURE, OCI) -The Cloud Bootcamp</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+    </div>
+
+    <div class="section-tag" style="margin-bottom: 0.75rem;">☁ certificações azure &amp; aws</div>
+    <div class="articles-grid" style="margin-bottom: 2.5rem;">
+
+      <a href="https://medium.com/@ademar.barreto/aws-cloud-quest-generative-ai-bd06a7148e60" target="_blank" class="article-card">
+        <div class="article-date">14 SET 2025</div>
+        <div class="article-title">AWS Cloud Quest: Generative AI Practitioner</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+      <a href="https://medium.com/@ademar.barreto/microsoft-certified-ai-900azure-ai-fundamentals-1dc6fb1a817c" target="_blank" class="article-card">
+        <div class="article-date">21 MAI 2024</div>
+        <div class="article-title">AI-900: Microsoft Azure AI Fundamentals</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+      <a href="https://medium.com/@ademar.barreto/az-900-microsoft-azure-fundamentals-47a1ecf17dbd" target="_blank" class="article-card">
+        <div class="article-date">06 MAI 2024</div>
+        <div class="article-title">AZ-900: Microsoft Azure Fundamentals</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+    </div>
+
+    <div class="section-tag" style="margin-bottom: 0.75rem;">🛠 implementações práticas — the cloud bootcamp</div>
+    <div class="articles-grid">
+
+      <a href="https://medium.com/@ademar.barreto/hands-on-healthhub-5b893e19ed80" target="_blank" class="article-card">
+        <div class="article-date">01 OUT 2025</div>
+        <div class="article-title">Hands-On HealthHub — Bootcamp AI Cloud</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+      <a href="https://medium.com/@ademar.barreto/microsservi%C3%A7o-orientado-a-eventos-de358295072d" target="_blank" class="article-card">
+        <div class="article-date">13 MAR 2024</div>
+        <div class="article-title">Microsserviço orientado a eventos: arquitetura serverless</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+      <a href="https://medium.com/@ademar.barreto/implementa%C3%A7%C3%A3o-do-para-monitoramento-em-tempo-real-de-urls-de-aplica%C3%A7%C3%A3o-499904c2da32" target="_blank" class="article-card">
+        <div class="article-date">09 MAR 2024</div>
+        <div class="article-title">Monitoramento em tempo real de URLs com CloudWatch Synthetics</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+      <a href="https://medium.com/@ademar.barreto/automa%C3%A7%C3%A3o-da-implanta%C3%A7%C3%A3o-do-humangov-saas-8e85226a4244" target="_blank" class="article-card">
+        <div class="article-date">06 MAR 2024</div>
+        <div class="article-title">Automação da implantação do HumanGov SaaS</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+      <a href="https://medium.com/@ademar.barreto/implanta%C3%A7%C3%A3o-do-humangov-saas-na-aws-eks-899f1ac898ec" target="_blank" class="article-card">
+        <div class="article-date">01 MAR 2024</div>
+        <div class="article-title">Implantação do HumanGov SaaS na AWS EKS</div>
+        <div class="article-readmore">→ ler no Medium</div>
+      </a>
+
+    </div>
+
+    <div style="margin-top: 1.5rem;">
+      <a href="https://medium.com/@ademar.barreto" target="_blank" class="btn-ghost">ver todos os artigos →</a>
     </div>
   </div>
 </section>
@@ -637,16 +789,125 @@
         <div class="cert-name">Claude 101 + Claude Cowork</div>
         <div class="cert-id">Abr–Mai 2026</div>
       </div>
+      
     </div>
 
     <div style="margin-top: 2.5rem;">
-      <div class="section-tag" style="margin-bottom: 0.75rem;">// formação acadêmica</div>
+      <div class="section-tag" style="margin-bottom: 0.75rem;">// certificações DIO (Digital Innovation One)</div>
+      <div class="certs-grid">
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">MS</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">Microsoft · DIO</div>
+            <div class="cert-name">Aceleração Microsoft — Azure AI Agents</div>
+            <div class="cert-id">17 Jun 2026 · 3h · B3JIMBCN</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">LP</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">Lupo · DIO</div>
+            <div class="cert-name">Primeiros Passos com Inteligência Artificial</div>
+            <div class="cert-id">05 Jun 2026 · 30h · EIP4ZZGH</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">CT</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">CI&amp;T · DIO</div>
+            <div class="cert-name">Do Prompt ao Agente</div>
+            <div class="cert-id">27 Mai 2026 · 35h · EMKV6L8B</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">GF</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">GFT · DIO</div>
+            <div class="cert-name">Fundamentos de Cloud com AWS</div>
+            <div class="cert-id">24 Mai 2026 · 48h · BKX3QCLE</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">LL</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">LuizaLabs (Magalu) · DIO</div>
+            <div class="cert-name">Back-end com Python — 2ª Edição</div>
+            <div class="cert-id">14 Mai 2026 · 38h · DUP4EASI</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">AC</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">Accenture · DIO</div>
+            <div class="cert-name">Python para Análise e Automação de Dados</div>
+            <div class="cert-id">22 Abr 2026 · 55h · CHOFYIF8</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">BR</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">Bradesco · DIO</div>
+            <div class="cert-name">GenAI &amp; Dados</div>
+            <div class="cert-id">19 Abr 2026 · 52h · XDL6KFII</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">TV</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">TOTVS · DIO</div>
+            <div class="cert-name">Fundamentos de Engenharia de Dados e Machine Learning</div>
+            <div class="cert-id">02 Abr 2026 · 61h · RTE1VKND</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">AF</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">Afya · DIO</div>
+            <div class="cert-name">Automação de Dados com IA</div>
+            <div class="cert-id">30 Abr 2026 · 51h · 6102JFWF</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">NX</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">Nexa (powered by AWS) · DIO</div>
+            <div class="cert-name">Fundamentos de IA Generativa com Bedrock</div>
+            <div class="cert-id">04 Dez 2025 · 9h · 4G9YCX0F</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">TQ</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">TQI · DIO</div>
+            <div class="cert-name">Modernização com GenAI</div>
+            <div class="cert-id">19 Nov 2025 · 37h · O3D9G0JL</div>
+          </div>
+        </div>
+        <div class="cert-card dio-badge">
+          <div class="cert-badge-icon">★</div>
+          <div class="cert-card-body">
+            <div class="cert-provider">DIO · Santander</div>
+            <div class="cert-name">DIO Campus Expert #16</div>
+            <div class="cert-id">Embaixador da plataforma de educação em IA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 2.5rem;">
+      <div class="section-tag" style="margin-bottom: 0.75rem;">// formação acadêmica e cursos relevantes</div>
       <div class="stack-items" style="gap: 8px;">
         <span class="tag" style="font-size:12px; padding: 5px 12px;">Eng. Eletrônica · PUC-RJ · 1985</span>
         <span class="tag" style="font-size:12px; padding: 5px 12px;">Pós-Grad. Análise e Proj. de Sistemas · PUC-RJ · 1989</span>
         <span class="tag" style="font-size:12px; padding: 5px 12px;">MBA Finanças · IBMEC · 1993</span>
         <span class="tag" style="font-size:12px; padding: 5px 12px;">MBA Marketing · IBMEC-RJ · 2005</span>
         <span class="tag" style="font-size:12px; padding: 5px 12px;">Nanodegree Deep Learning · Udacity · 2018</span>
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">Engenheiro de Machine Learning · Udacity · 2018</span>
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">Fundamentos de Data Science I · Udacity · 2018</span>
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">Fundamentos de Data Science II · Udacity · 2018</span>
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">Gerência de Projetos PMP · RJPROJ · 2018</span>
+        <span class="tag" style="font-size:12px; padding: 5px 12px;">Certificação Scrum Master e Product Owner · RJPROJ · 2018</span>
+  <span class="tag" style="font-size:12px; padding: 5px 12px;">Formação DevOps Pro 2.0 (Docker, Kubernetes, Git, GitHub Actions, Jenkins, Terraform, Ansible, Prometheus, Grafana) · KubeDev · 2025</span>        
       </div>
     </div>
   </div>
