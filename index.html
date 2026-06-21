@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ademar Barreto | Arquiteto de Soluções & Cloud Engineer</title>
+<meta name="description" content="Arquiteto de Soluções e Gerente de Infraestrutura com 30+ anos de experiência em cloud, DevOps e IA generativa.">
+<meta property="og:title" content="Ademar Barreto | Arquiteto de Soluções & Cloud Engineer">
+<meta property="og:description" content="Arquiteto de Soluções e Gerente de Infraestrutura com 30+ anos de experiência em AWS, Azure, DevOps e IA generativa.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ademarbarreto.github.io">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ademar Barreto | Arquiteto de Soluções & Cloud Engineer">
+<meta name="twitter:description" content="Arquiteto de Soluções e Gerente de Infraestrutura com 30+ anos de experiência em AWS, Azure, DevOps e IA generativa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -55,7 +63,22 @@
     color: var(--text2); text-decoration: none;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--cyan); }
+  .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+  .nav-toggle {
+    display: none;
+    background: none; border: 1px solid var(--border2);
+    color: var(--text); border-radius: 6px;
+    width: 32px; height: 32px; cursor: pointer;
+    align-items: center; justify-content: center;
+    font-size: 16px; line-height: 1;
+  }
+  .nav-links.mobile-open {
+    display: flex; flex-direction: column;
+    position: fixed; top: 56px; left: 0; right: 0;
+    background: rgba(10,14,20,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem; gap: 1rem;
+  }
 
   /* HERO */
   .hero {
@@ -312,9 +335,27 @@
 
   @media (max-width: 640px) {
     .nav-links { display: none; }
+    .nav-links.mobile-open { display: flex; }
+    .nav-toggle { display: flex; }
     .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
     .stat-num { font-size: 1.5rem; }
+    h1 { white-space: normal; }
   }
+
+  /* BACK TO TOP */
+  .back-to-top {
+    position: fixed; bottom: 24px; right: 24px; z-index: 90;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--cyan); color: #000;
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(0,212,255,0.3);
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { transform: translateY(-2px); }
 </style>
 </head>
 <body>
@@ -322,7 +363,7 @@
 <!-- NAV -->
 <nav>
   <span class="nav-logo">~/ademar-barreto</span>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#stack">stack</a></li>
     <li><a href="#experiencia">experiência</a></li>
     <li><a href="#projetos">projetos</a></li>
@@ -330,6 +371,7 @@
     <li><a href="#certs">certs</a></li>
     <li><a href="#contato">contato</a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">☰</button>
 </nav>
 
 <!-- HERO -->
@@ -610,11 +652,11 @@
       </div>
 
       <div class="project-card">
-        <div class="project-icon">🔌</div>
+        <div class="project-icon">⚙</div>
         <div class="project-name">Desafio Bootcamp TQI: Gerenciando Instâncias EC2 na AWS</div>
         <div class="project-desc">Criar EC2 (Ubuntu + NGINX) no Free Tier, gerar AMI customizada terraform-ec2-ami e criar uma nova instância a partir da AMI, usando Terraform.</div>
         <div class="project-tags">
-          <span class="tag">MCP</span><span class="tag">Agentes de IA</span><span class="tag">LangChain</span>
+          <span class="tag">AWS</span><span class="tag">Terraform</span><span class="tag">EC2</span><span class="tag">Nginx</span>
         </div>
         <a href="https://github.com/ademarbarreto/desafio-TQI-terraform-ec2-ami-nginx" target="_blank" class="project-link">→ ver no GitHub</a>
       </div>
@@ -622,20 +664,20 @@
       <div class="project-card">
         <div class="project-icon">🔌</div>
         <div class="project-name">Agente de Organização de Tarefas com Google ADK + Trello</div>
-        <div class="project-desc"> SageMaker Canvas para criar previsões de estoque baseadas em Machine Learning (ML)</div>
+        <div class="project-desc">Agente de IA que organiza e gerencia tarefas integrando o Google ADK ao Trello, com resolução de bugs de serialização, fuso horário e cotas de API.</div>
         <div class="project-tags">
-          <span class="tag">MCP</span><span class="tag">Agentes de IA</span><span class="tag">LangChain</span>
+          <span class="tag">Google ADK</span><span class="tag">Trello API</span><span class="tag">Python</span>
         </div>
-        <a href="https://github.com/ademarbarreto/desafio-TQI-terraform-ec2-ami-nginx" target="_blank" class="project-link">→ ver no GitHub</a>
+        <a href="https://github.com/ademarbarreto" target="_blank" class="project-link">→ ver no GitHub</a>
       </div>
 
       <div class="project-card">
-        <div class="project-icon">🔌</div>
+        <div class="project-icon">🛡</div>
         <div class="project-name">Detecção de Fraude em Cartão de Crédito - Credicard</div>
         <div class="project-desc">Análise técnica completa de Machine Learning desenvolvido para detecção de fraudes em transações fraudulentas em cartões de crédito.
 O projeto utiliza o dataset público Creditcard</div>
         <div class="project-tags">
-          <span class="tag">MCP</span><span class="tag">Agentes de IA</span><span class="tag">LangChain</span>
+          <span class="tag">Machine Learning</span><span class="tag">Python</span><span class="tag">Regressão Logística</span>
         </div>
         <a href="https://github.com/ademarbarreto/accenture" target="_blank" class="project-link">→ ver no GitHub</a>
       </div>
@@ -968,11 +1010,50 @@ O projeto utiliza o dataset público Creditcard</div>
   <p>Feito com 💻 por <a href="https://github.com/ademarbarreto">Ademar Barreto</a> · Rio de Janeiro, RJ · 2026</p>
 </footer>
 
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+
 <script>
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Mobile hamburger menu
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('mobile-open');
+  navToggle.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('mobile-open');
+    navToggle.textContent = '☰';
+  });
+});
+
+// Scrollspy: highlight active nav link
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
+const spyObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navAnchors.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => spyObs.observe(s));
+
+// Back to top button
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 600);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 </body>
 </html>
