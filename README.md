@@ -198,7 +198,7 @@ Certificações ativas e formação contínua em cloud, IA e gestão.
 | Fundamentos de IA Generativa com Bedrock | Nexa (powered by AWS) · DIO | 04 Dez 2025 · 9h · `4G9YCX0F` |
 | Modernização com GenAI | TQI · DIO | 19 Nov 2025 · 37h · `O3D9G0JL` |
 | Inteligência Artificial aplicada a Vendas | DIO · HEINEKEN | 04 Jul 2026 · 27h ·`UYM6YTWH` |
-| DIO Campus Expert #16 | DIO · Santander | Embaixador da plataforma de educação em IA |
+| DIO Campus Expert #16 | DIO · Santander |  07 Jul 2026 . 40h . Embaixador da plataforma de educação em IA  |
 | GenAI & Dados & Cyber | Bradesco · DIO | 07 Jul 2026 · 52h · `ZDO4WGZQ` |
 
 ### Formação acadêmica e cursos relevantes
