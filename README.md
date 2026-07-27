@@ -137,6 +137,7 @@ Desafios práticos desenvolvidos em bootcamps DIO e iniciativas pessoais.
 | [**Desafio Bootcamp TQI: Gerenciando Instâncias EC2 na AWS**](https://github.com/ademarbarreto/desafio-TQI-terraform-ec2-ami-nginx) | Criação de EC2 (Ubuntu + NGINX) no Free Tier, geração de AMI customizada terraform-ec2-ami e nova instância a partir da AMI, usando Terraform. | `AWS` `Terraform` `EC2` `Nginx` |
 | [**Agente de Organização de Tarefas com Google ADK + Trello**](https://github.com/ademarbarreto/agent-automation-python-trello) | Agente de IA que organiza e gerencia tarefas integrando o Google ADK ao Trello, com resolução de bugs de serialização, fuso horário e cotas de API. | `Google ADK` `Trello API` `Python` |
 | [**Detecção de Fraude em Cartão de Crédito — Credicard**](https://github.com/ademarbarreto/accenture) | Análise técnica completa de Machine Learning para detecção de fraudes em transações de cartões de crédito, com o dataset público Creditcard. | `Machine Learning` `Python` `Regressão Logística` |
+| [**Criação do Dashboard da Porsche**](https://github.com/ademarbarreto/desafio-Porsche-Dashboard) | Análise técnica completa de Machine Learning para detecção de fraudes em transações de cartões de crédito, com o dataset público Creditcard. | `HTML` `CSS` `JS` |
 
 ---
 
@@ -200,6 +201,7 @@ Certificações ativas e formação contínua em cloud, IA e gestão.
 | Inteligência Artificial aplicada a Vendas | DIO · HEINEKEN | 04 Jul 2026 · 27h ·`UYM6YTWH` |
 | DIO Campus Expert #16 | DIO · Santander |  07 Jul 2026 . 40h . Embaixador da plataforma de educação em IA  |
 | GenAI & Dados & Cyber | Bradesco · DIO | 07 Jul 2026 · 52h · `ZDO4WGZQ` |
+| Aceleração Santander - Excel com IA e Claude | DIO · Santander |  27 Jul 2026 . 40h . `M8MNHOBL` |
 
 ### Formação acadêmica e cursos relevantes
 
