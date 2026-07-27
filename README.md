@@ -202,7 +202,7 @@ Certificações ativas e formação contínua em cloud, IA e gestão.
 | DIO Campus Expert #16 | DIO · Santander |  07 Jul 2026 . 40h . Embaixador da plataforma de educação em IA  |
 | GenAI & Dados & Cyber | Bradesco · DIO | 07 Jul 2026 · 52h · `ZDO4WGZQ` |
 | Aceleração Santander - Excel com IA e Claude | DIO · Santander |  27 Jul 2026 . 40h . `M8MNHOBL` |
-| Aceleração Santander - Automatização na prática | DIO · Santander |  27 Jul 2026 . 5h . `14BK2HMX` |
+| Aceleração Santander - Automatização na prática | DIO · Santander |  27 Jul 2026 . 5h . `I4BK2HMX` |
 
 ### Formação acadêmica e cursos relevantes
 
